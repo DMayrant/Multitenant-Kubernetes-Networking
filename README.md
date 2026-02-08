@@ -7,3 +7,5 @@ The main concept behind Kubernetes is a focus on networking and security with sc
 Loadbalancing service causes kubernetes to provision cloud native ALB/NLB, done by the controller manager. A loadbalancer services as entry point to Ingress controller. Ingress Controller services as an entry point for your namespaces and workloads. Ingress provides TLS termination, CPU offloading, routing rules and layer 7 control of HTTP/HTTPS. Ingress makes architecture look clean, cost-effective and provides additional security. 
 
 ![image alt](https://github.com/DMayrant/Multitenant-Kubernetes-Networking/blob/main/Multitenent%20Kubernetes%20Networking.jpeg?raw=true)
+
+![image alt](https://github.com/DMayrant/Multitenant-Kubernetes-Networking/blob/main/Screenshot%202569-02-07%20at%2020.08.45.png?raw=true)
