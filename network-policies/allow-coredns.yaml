@@ -1,0 +1,50 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-coredns
+  namespace: team-a
+spec:
+  podSelector:
+    matchLabels:
+      app: team-a-app
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+
+    - to:
+       - namespaceSelector:
+           matchLabels:
+              kubernetes.io/metadata.name: team-a
+         podSelector:
+           matchLabels:
+              app: team-a-app
+       - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: team-b
+         podSelector:
+            matchLabels:
+              app: team-b-app      
+      ports:
+        - protocol: TCP
+          port: 80
+    
+    - to:
+      - ipBlock: 
+          cidr: 10.89.0.0/16 # AWS VPC
+      ports: 
+        - protocol: TCP 
+          port: 443    
+
+     

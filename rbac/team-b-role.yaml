@@ -1,0 +1,29 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: team-b-role
+  namespace: team-b
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - create
+      - watch
+      - list
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: team-b-rolebinding
+  namespace: team-b
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: team-b-role
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: team-b

@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-ingress
+  namespace: team-b
+spec:
+  podSelector:
+    matchLabels:
+     app: team-b-app
+  policyTypes:
+  - Egress
+  

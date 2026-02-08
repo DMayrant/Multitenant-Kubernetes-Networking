@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-nginx-from-curl
+  namespace: team-b
+spec:
+  podSelector:
+    matchLabels:
+      app: team-b-app
+
+  policyTypes:
+  - Ingress
+
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          run: nginx-team-b
+    ports:
+    - protocol: TCP
+      port: 80

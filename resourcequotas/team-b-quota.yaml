@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: team-b-quota
+  namespace: team-b
+spec:
+  hard:
+    cpu: "5"
+    memory: 3Gi
+    pods: "8"
+status: {}
