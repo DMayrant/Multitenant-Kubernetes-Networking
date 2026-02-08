@@ -1,1 +1,8 @@
-# Multitenant-Kubernetes-Networking
+# Multi-tenant Network-Policies and RBAC  🛜
+
+The main concept behind Kubernetes is a focus on networking and security with scheduling to maintain workloads. Multi-tenant networking is common in Platform, SRE and DevSecOps engineering. Teams are assigned and resources are evenly divided into namespaces with resource quotas so resource hogging does not disrupt workloads in other namespaces. Each namespace has a default deny-all ingress and egress networking policy ensuring that zero-trust is followed, only allowing traffic on necessary ports. The principle behind networking policies is to allow DNS resolution by allowing traffic on UDP/TCP 53 so DNS doesn't break within applications. Allowing traffic over HTTP TCP 80 is for internal service discovery and service-to-service communication is need so pods can communicate within the cluster network. Another kubernetes security feature is Role Based Access Control (RBAC) is used as authorization for users, groups and service accounts. Preventing lateral movement of threat vectors in your cluster networking along with nepols. RBAC contains roles for namespaced resources and cluster roles for cluster resource. Cluster role and role bindings attach roles/ clusters roles to user, group or service account   
+
+# Ingress vs Loadbalancing Service (Entry Points) ⚖️
+
+Loadbalancing service causes kubernetes to provision cloud native ALB/NLB, done by the controller manager. A loadbalancer services as entry point to Ingress controller. Ingress Controller services as an entry point for your namespaces and workloads. Ingress provides TLS termination, CPU offloading, routing rules and layer 7 control of HTTP/HTTPS. Ingress makes architecture look clean, cost-effective and provides additional security. 
+
